@@ -1,0 +1,10 @@
+{
+  "name": "signaldesk-server",
+  "version": "1.0.0",
+  "description": "SignalDesk backend",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,897 @@
+SignalDesk — Day 1 Notes
+Topic: Project Setup, React, Node.js, Express, Git & First API
+1. What are we building?
+SignalDesk is an AI-powered Voice of Customer (VoC) platform.
+
+The purpose of this application is to help businesses understand customer feedback, discover problems, identify trends and eventually use AI to analyze customer sentiment.
+
+Today, we didn't build the features yet. We created the foundation on which the entire application will be built.
+
+Our Day 1 architecture:
+React Frontend
+localhost:5173User interface
+
+↓ Later, communicates through HTTP requests
+Express Backend
+localhost:5000API and server logic
+
+
+Today, these two applications run independently. We have not connected the frontend to the backend yet.
+
+2. Development tools
+2.1 Node.js
+What is Node.js?
+
+Node.js is a runtime environment that allows us to execute JavaScript outside a web browser.
+
+Normally, JavaScript runs inside a browser such as Chrome. Node.js allows us to use JavaScript to build server-side applications, command-line tools and other programs.
+
+Why are we using Node.js in SignalDesk?
+
+We will use Node.js to run our Express backend. Later, the backend will handle authentication, customer feedback, database operations, AI processing and other application logic.
+
+Check Node.js:
+node -v
+
+
+What does -v mean?
+
+-v means version. This command displays the installed Node.js version.
+
+2.2 npm
+What is npm?
+
+npm stands for Node Package Manager. It helps us install, manage and run JavaScript packages and project scripts.
+
+A package is a reusable piece of code that developers can install instead of building everything from scratch.
+
+For example, we installed Express using npm.
+npm -v
+
+
+This checks the installed npm version.
+Why do we need npm?
+Imagine we want to build an HTTP server. We could write a lot of low-level code ourselves, but Express provides useful functions and abstractions that make building the server easier.
+
+npm allows us to install Express into our project.
+
+2.3 Git
+What is Git?
+
+Git is a version-control system.
+
+It tracks changes to files in a project over time. It allows developers to save snapshots of their code, inspect changes and return to previous versions when necessary.
+Why do we need Git?
+Suppose today your application works perfectly.
+
+Tomorrow, you change 20 files and accidentally break the application.
+
+With Git, if you have saved a previous commit, you can inspect or recover the earlier state.
+
+Git helps us:
+- Track code changes.
+- Save checkpoints.
+- Compare versions.
+- Collaborate with other developers.
+- Manage development branches.
+Check Git:
+git --version
+
+
+
+2.4 Visual Studio Code
+VS Code is our code editor.
+
+We use it to:
+- Create files.
+- Create folders.
+- Write JavaScript.
+- Open the terminal.
+- Debug our applications.
+- Manage project files.
+We are using VS Code because it provides a convenient environment for developing React and Node.js applications.
+
+3. Terminal basics
+The terminal is a text-based interface where we execute commands.
+
+Instead of clicking buttons to perform certain operations, we type commands.
+3.1 mkdir
+mkdir signaldesk
+
+
+Meaning: Make directory.
+
+A directory is another name for a folder.
+
+This command creates a new folder named signaldesk.
+3.2 cd
+cd signaldesk
+
+
+Meaning: Change directory.
+
+This command moves us into the signaldesk folder.
+3.3 cd ..
+cd ..
+
+
+This moves us one level up from our current folder.
+
+For example:
+signaldesk/
+└── client/
+
+
+If the terminal is inside client, running cd .. takes us back to signaldesk.
+3.4 dir
+dir
+
+
+This displays the files and folders in the current directory in Windows.
+3.5 code .
+code .
+
+
+This opens the current directory in VS Code, if the code command is available in your terminal.
+
+4. Project structure
+We created a project with two main folders.
+signaldesk/
+├── client/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── server/
+│   ├── server.js
+│   ├── package.json
+│   └── ...
+│
+└── README.md
+
+
+4.1 client
+The client folder contains our frontend application.
+
+The frontend is the part of an application that users see and interact with.
+
+Examples:
+- Buttons.
+- Forms.
+- Dashboard.
+- Charts.
+- Navigation.
+- Tables.
+- Feedback pages.
+We are using React to build this frontend.
+4.2 server
+The server folder contains our backend application.
+
+The backend handles server-side operations.
+
+Later, our backend will handle:
+- Authentication.
+- API requests.
+- Database operations.
+- Customer feedback.
+- AI processing.
+- Business logic.
+We are using Node.js and Express.
+4.3 README.md
+A README is a documentation file that explains a project.
+
+It usually contains:
+- Project description.
+- Technology stack.
+- Installation instructions.
+- How to run the application.
+- Project structure.
+
+5. Git initialization
+5.1 What is a Git repository?
+A Git repository is a project where Git tracks changes and maintains version history.
+
+We initialized Git in the root of SignalDesk.
+git init
+
+
+What does git init do?
+It initializes a Git repository in the current directory.
+
+Git creates internal repository information that allows it to track changes.
+
+We should execute this command from the root of our project.
+5.2 Branches
+A branch allows developers to work on a separate line of development.
+
+We changed our branch name to main.
+git branch -M main
+
+
+What does this command mean?
+- git branch works with branches.
+- -M renames the branch forcefully if needed.
+- main is the new branch name.
+We are using main as our primary branch.
+5.3 Git status
+git status
+
+
+This displays the current state of our Git repository.
+
+It helps us understand:
+- Which files are modified.
+- Which files are untracked.
+- Which files are staged.
+- Which branch we are currently on.
+
+6. React and Vite
+6.1 What is React?
+React is a JavaScript library for building user interfaces.
+
+We use React to build interactive frontend applications.
+
+For example, in SignalDesk, React will help us build:
+- Dashboard.
+- Sidebar.
+- Feedback management.
+- Analytics.
+- Settings.
+- User interface components.
+React allows us to create reusable components.
+
+What is a component?
+
+A component is a reusable piece of user interface.
+
+For example, imagine a dashboard contains:
+- Sidebar.
+- Navbar.
+- Card.
+- Chart.
+- Button.
+We can build these as separate React components and reuse them.
+
+We will learn components properly in later days.
+6.2 What is Vite?
+Vite is a frontend development tool.
+
+It helps us create and run modern frontend projects efficiently.
+
+Vite provides:
+- Project scaffolding.
+- Development server.
+- Fast development feedback.
+- Build tools.
+We used Vite to create our React application.
+6.3 Creating React with Vite
+We ran:
+npm create vite@latest client -- --template react
+
+
+Let's understand every part.
+Command	Meaning
+npm	Runs the npm package manager.
+create	Runs a project creation tool.
+vite@latest	Uses the latest Vite scaffolding tool.
+client	The name of our project directory.
+--	Separates npm arguments from arguments passed to the generator.
+--template react	Selects the React template.
+
+This command generated our React project.
+6.4 Installing dependencies
+We ran:
+npm install
+
+
+This installs the packages required by the frontend project.
+What are dependencies?
+Dependencies are packages our application needs.
+
+For example:
+- React.
+- React DOM.
+- Vite.
+These packages are listed in package.json.
+What is node_modules?
+node_modules is the directory where npm installs the project's packages.
+
+It can contain a large number of files.
+
+We generally do not manually edit node_modules.
+6.5 Running React
+We ran:
+npm run dev
+
+
+This starts the development server using the script configured in the frontend's package.json.
+
+Vite typically provides:
+http://localhost:5173/
+
+
+6.6 What is localhost?
+localhost refers to your own computer.
+
+When we run a development server, our computer can host an application that we access using a local URL.
+
+For example:
+- localhost:5173 — our frontend.
+- localhost:5000 — our backend.
+6.7 What is a port?
+A port helps identify a particular network service running on a computer.
+
+Think of your computer as a building and ports as different doors to different services.
+
+For our project:
+Port	Application
+5173	React + Vite frontend
+5000	Express backend
+
+These are development ports. We may change them later.
+
+7. Node.js backend
+7.1 What is a backend?
+A backend is the server-side part of an application.
+
+The frontend interacts with users. The backend handles server-side logic and data processing.
+
+For example, later in SignalDesk:
+User
+  ↓
+React Frontend
+  ↓
+Backend API
+  ↓
+Database
+
+
+Our backend will eventually process requests, validate data, access the database and return responses.
+7.2 What is Express?
+Express is a web framework for Node.js.
+
+It provides convenient ways to:
+- Create routes.
+- Handle HTTP requests.
+- Send responses.
+- Use middleware.
+- Organize backend logic.
+We use Express to build the SignalDesk API.
+
+8. Backend setup
+8.1 Create the server folder
+We created the backend folder:
+mkdir server
+cd server
+
+
+This creates the server directory and moves into it.
+8.2 Initialize Node.js
+We ran:
+npm init -y
+
+
+What does npm init do?
+It initializes a new Node.js project by creating a package.json file.
+What does -y mean?
+It automatically accepts the default initialization values.
+
+Without -y, npm would ask us several questions.
+8.3 What is package.json?
+package.json is a configuration file for our Node.js project.
+
+It can contain:
+- Project name.
+- Version.
+- Description.
+- Dependencies.
+- Development dependencies.
+- Scripts.
+- Module configuration.
+It is an important file in JavaScript projects.
+
+9. Installing Express
+We ran:
+npm install express
+
+
+This installs Express into our backend project.
+What happens after installation?
+npm:
+1. Downloads the package.
+2. Adds Express to the dependencies in package.json.
+3. Installs the package inside node_modules.
+4. Updates the package lock file.
+What is package-lock.json?
+package-lock.json records specific dependency versions and dependency details to help reproduce installations consistently.
+
+We generally keep this file in Git.
+
+10. Installing Nodemon
+We ran:
+npm install -D nodemon
+
+
+What is Nodemon?
+Nodemon is a development tool that monitors our server files.
+
+When we modify the server code, Nodemon automatically restarts the backend.
+
+Without Nodemon, we might need to stop and manually restart the server after every change.
+What does -D mean?
+-D means install the package as a development dependency.
+
+Nodemon is primarily a development tool, so we install it as a dev dependency.
+
+11. ES Modules
+11.1 What are ES Modules?
+ES Modules are a JavaScript module system.
+
+They allow us to divide our code into separate files and import or export functionality.
+
+For example:
+import express from "express";
+
+
+This imports Express.
+
+We will use import and export throughout our SignalDesk backend.
+11.2 What does "type": "module" mean?
+In our backend package.json, we added:
+"type": "module"
+
+
+This tells Node.js to interpret JavaScript files in this package using the ES Module system.
+
+It allows us to use:
+import express from "express";
+
+
+Instead of the older CommonJS style:
+const express = require("express");
+
+
+For SignalDesk, we will use ES Modules.
+
+12. Backend scripts
+We configured the scripts in server/package.json:
+"scripts": {
+  "dev": "nodemon server.js",
+  "start": "node server.js"
+}
+
+
+12.1 Development script
+npm run dev
+
+
+This runs:
+nodemon server.js
+
+
+Nodemon monitors the server files and restarts the server when changes occur.
+12.2 Start script
+npm start
+
+
+This runs:
+node server.js
+
+
+It starts the backend directly using Node.js.
+
+13. Understanding our first backend file
+We created:
+
+server/server.js
+
+Code:
+import express from "express";
+
+const app = express();
+
+app.use(express.json());
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+const PORT = 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
+
+Now let's understand every line.
+13.1 Import Express
+import express from "express";
+
+
+This imports the Express package.
+
+Without importing Express, we cannot use Express functionality in this file.
+13.2 Create an Express application
+const app = express();
+
+
+This creates an Express application instance.
+
+We store it inside the variable app.
+
+We use this application instance to configure:
+- Routes.
+- Middleware.
+- Server behavior.
+13.3 Middleware
+app.use(express.json());
+
+
+What is middleware?
+Middleware is a function or processing layer that runs as part of handling an HTTP request.
+
+Middleware can:
+- Read request information.
+- Modify request or response objects.
+- Perform validation.
+- Authenticate users.
+- Log requests.
+- Pass control to another middleware.
+- End the request.
+What does express.json() do?
+It parses incoming JSON request bodies.
+
+Imagine a frontend sends:
+{
+  "name": "SignalDesk"
+}
+
+
+The JSON middleware helps Express parse this JSON body so we can access the data through req.body in routes.
+
+Today we added it as basic backend preparation.
+
+14. HTTP
+14.1 What is HTTP?
+HTTP stands for Hypertext Transfer Protocol.
+
+It is a protocol used for communication between clients and servers.
+
+A client can send an HTTP request to a server.
+
+The server processes the request and sends an HTTP response.
+
+For example:
+Browser
+   ↓ HTTP Request
+Express Server
+   ↓ HTTP Response
+Browser
+
+
+Later, React will send HTTP requests to SignalDesk APIs.
+14.2 HTTP methods
+We introduced the GET method today.
+
+Common HTTP methods include:
+Method	Common purpose
+GET	Retrieve information.
+POST	Create or submit information.
+PUT	Replace an existing resource.
+PATCH	Update part of a resource.
+DELETE	Delete a resource.
+
+We will study these properly when building our APIs.
+
+15. Routes
+15.1 What is a route?
+A route tells the backend how to handle a request for a particular HTTP method and URL path.
+
+For example:
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+
+This route handles GET requests to:
+/api/health
+
+
+15.2 Understanding app.get()
+app.get("/api/health", (req, res) => {
+});
+
+
+app.get() registers a route for GET requests.
+
+The first argument is the route path.
+
+The second argument is the callback function that executes when a matching request arrives.
+15.3 Understanding req
+(req, res) => {
+}
+
+
+req means request.
+
+It represents information about the incoming HTTP request.
+
+Later, it can contain information such as:
+- Request parameters.
+- Query parameters.
+- Request body.
+- Headers.
+15.4 Understanding res
+res means response.
+
+It is used to send a response back to the client.
+
+For example:
+res.json({ status: "ok" });
+
+
+This sends JSON to the requesting client.
+
+16. Our first API — Health check
+We created:
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+
+16.1 What is an API?
+API stands for Application Programming Interface.
+
+In our project, APIs will allow the frontend to communicate with the backend.
+
+For example, later:
+React
+   ↓
+GET /api/feedback
+   ↓
+Express
+   ↓
+MongoDB
+   ↓
+Express Response
+   ↓
+React
+
+
+16.2 What is a health-check API?
+A health-check endpoint is a simple endpoint that helps us determine whether a service is responding.
+
+Our endpoint:
+GET /api/health
+
+
+Returns:
+{
+  "status": "ok"
+}
+
+
+This response indicates that the route is working and the server is responding.
+
+It does not yet check the database, Redis, or AI services.
+
+17. Understanding the port
+We wrote:
+const PORT = 5000;
+
+
+This stores the number 5000 in a variable named PORT.
+
+Our backend uses this port to listen for requests.
+Why port 5000?
+We selected port 5000 for our local backend during development.
+
+The frontend uses a different port, so both applications can run simultaneously.
+
+18. Starting the server
+We ran:
+npm run dev
+
+
+This executes the dev script in our backend package.json.
+
+Our script:
+"dev": "nodemon server.js"
+
+
+Nodemon starts server.js.
+Expected output
+Server running on http://localhost:5000
+
+
+This indicates that our server has started and is listening on port 5000.
+
+19. Testing our API
+We opened:
+http://localhost:5000/api/health
+
+
+The browser sends an HTTP GET request to our backend.
+
+Our Express route receives it and returns:
+{
+  "status": "ok"
+}
+
+
+What happens step by step?
+1. We open the URL in the browser.
+2. The browser sends a GET request.
+3. The request reaches our Express server.
+4. Express matches the /api/health route.
+5. The callback function executes.
+6. res.json() sends the JSON response.
+7. The browser displays the response.
+
+20. Running frontend and backend together
+We run two independent development servers.
+Frontend terminal
+Inside client:
+npm run dev
+
+
+Frontend:
+http://localhost:5173/
+
+
+Backend terminal
+Inside server:
+npm run dev
+
+
+Backend:
+http://localhost:5000/api/health
+
+
+We use two terminal windows because both development servers must continue running simultaneously.
+
+21. README
+We created a README file to explain our project.
+
+A README is often the first documentation someone sees when visiting a repository.
+
+Our README includes:
+- Project name.
+- Description.
+- Technology stack.
+- Project structure.
+- Development instructions.
+- Health-check endpoint.
+
+22. Git staging
+We used:
+git add .
+
+
+What is staging?
+Staging is the process of preparing changes to be included in a Git commit.
+
+Git has three important concepts:
+Area	Meaning
+Working directory	Files you currently edit.
+Staging area	Changes prepared for a commit.
+Repository	Saved Git history.
+
+git add . stages eligible changes in the current directory and its subdirectories.
+
+Before staging, we should check that we are not adding secrets or unwanted files.
+
+23. Git commit
+We used:
+git commit -m "chore: initialize SignalDesk project"
+
+
+What is a commit?
+A commit is a snapshot of staged changes saved in Git history.
+What does -m mean?
+It allows us to provide a commit message.
+What does chore mean?
+chore is a conventional commit prefix commonly used for maintenance or setup-related work.
+
+Our message:
+chore: initialize SignalDesk project
+
+
+Describes the initial project setup.
+
+24. GitHub
+24.1 What is GitHub?
+GitHub is a platform for hosting Git repositories.
+
+Git manages version history locally. GitHub lets us store and share our repository online.
+
+We can use GitHub for:
+- Code hosting.
+- Portfolio projects.
+- Collaboration.
+- Pull requests.
+- Issues.
+- CI/CD workflows.
+24.2 Connecting GitHub
+We connected our local project with the remote GitHub repository.
+git remote add origin https://github.com/YOUR_USERNAME/signaldesk.git
+
+
+What is a remote?
+A remote is a reference to another repository, often hosted online.
+
+origin is the commonly used name for the default remote.
+24.3 Push
+We used:
+git push -u origin main
+
+
+What does push mean?
+Push uploads our local commits to a remote repository.
+- origin — the remote repository.
+- main — the branch we are pushing.
+- -u — sets the upstream tracking relationship for future pushes.
+
+25. Day 1 command revision
+Command	Purpose
+node -v	Check Node.js version.
+npm -v	Check npm version.
+git --version	Check Git version.
+mkdir signaldesk	Create project folder.
+cd signaldesk	Enter project folder.
+cd ..	Move one directory up.
+dir	List files and folders in Windows.
+code .	Open current directory in VS Code.
+git init	Initialize Git.
+git branch -M main	Rename branch to main.
+git status	Check repository status.
+npm create vite@latest client -- --template react	Create React frontend.
+npm install	Install dependencies.
+npm run dev	Run the configured development script.
+npm init -y	Initialize Node.js project.
+npm install express	Install Express.
+npm install -D nodemon	Install Nodemon as a development dependency.
+git add .	Stage changes.
+git commit -m "message"	Save a Git commit.
+git push -u origin main	Push commits to GitHub.
+
+
+26. Day 1 — What you learned
+By the end of Day 1, you have been introduced to:
+- Node.js.
+- npm.
+- Git.
+- GitHub.
+- VS Code.
+- Terminal commands.
+- Directory and folder navigation.
+- React.
+- Vite.
+- Frontend development servers.
+- Node.js project initialization.
+- Express.
+- Nodemon.
+- ES Modules.
+- package.json.
+- Dependencies.
+- Dev dependencies.
+- Middleware.
+- HTTP.
+- GET requests.
+- Routes.
+- Request (req).
+- Response (res).
+- JSON.
+- APIs.
+- Health-check endpoints.
+- Localhost.
+- Ports.
+- Git staging.
+- Git commits.
+- README documentation.
+Tomorrow's learning approach
+
+Starting Day 2, you will not simply copy code. I'll explain the concept, show the task, help you understand the logic, and you'll write the implementation manually. We'll verify your work before moving on.
+
+Day 1 was about setting up the environment. From Day 2 onward, you'll gradually build SignalDesk while learning full-stack development through hands-on implementation. 💻
